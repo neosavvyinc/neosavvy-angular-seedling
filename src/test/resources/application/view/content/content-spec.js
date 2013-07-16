@@ -1,0 +1,3 @@
+describe("view.ContentController", function() {
+
+});
