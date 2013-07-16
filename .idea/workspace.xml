@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92e1f3ae-66b2-4a71-aaff-93d251cb3ef9" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-cookies.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-cookies.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-cookies.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-cookies.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-loader.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-loader.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-loader.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-loader.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-mocks.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-mocks.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-resource.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-resource.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-resource.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-resource.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-sanitize.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-sanitize.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-sanitize.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-sanitize.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular-scenario.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular-scenario.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/index.html" afterPath="$PROJECT_DIR$/src/main/resources/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.min.js" afterPath="$PROJECT_DIR$/src/main/resources/lib/angular/angular.min.js" />
     </list>
     <ignored path="angular-seedling.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -329,6 +317,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../opensource/demos/angular-web-workers-demo" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
   </component>
   <component name="RecentsManager">
