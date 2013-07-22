@@ -1,19 +1,19 @@
-basePath = '../';
+basePath = '../../';
 
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'app/lib/angular.js',
-  'app/lib/angular-mocks.js',
+  'main/resources/lib/angular/angular.js',
+  'main/resources/lib/angular/angular-mocks.js',
 
-  'app/application/application.js',
+  'main/resources/application/**/*.js',
 
-  'app/*/*-constants.js',
-  'app/*/*-service.js',
-  'app/*/*-controller.js',
-  'app/*/*-filter.js',
-  'app/*/*-directive.js',
-  'app/*/*-test.js'
+//  'resources/application/**/*-constants.js',
+//  'resources/application/**/*-service.js',
+//  'resources/application/**/*-controller.js',
+//  'resources/application/**/*-filter.js',
+//  'resources/application/**/*-directive.js',
+  'test/resources/application/**/*-spec.js'
 
 ];
 
