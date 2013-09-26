@@ -1,0 +1,30 @@
+{
+  "name": "neosavvy-angular-seedling",
+  "version": "0.0.1",
+  "homepage": "https://github.com/neosavvyinc/angular-seedling",
+  "authors": [
+    "Neosavvy",
+    "Inc."
+  ],
+  "description": "A seed project for Neosavvy Angular JS applications.",
+  "keywords": [
+    "neosavvy",
+    "angular",
+    "angularjs",
+    "turnkey"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cache": "~1.2.0",
+    "angular": "~1.0.8",
+    "lodash": "~2.1.0",
+    "momentjs": "~2.2.1"
+  }
+}

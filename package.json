@@ -1,0 +1,26 @@
+{
+  "name": "neosavvy-angular-seedling",
+  "version": "0.0.1",
+  "description": "A seed project for Neosavvy Angular JS applications.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neosavvyinc/angular-seedling.git"
+  },
+  "keywords": [
+    "neosavvy",
+    "angular",
+    "angularjs",
+    "turnkey"
+  ],
+  "author": "Neosavvy, Inc.",
+  "license": "MIT",
+  "gitHead": "e66c2dfae95ba24ea0286b573f357b2892b22eef",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-bower-task": "~0.3.2"
+  },
+  "paths": {
+    "libraries": "src/main/resources/lib"
+  }
+}
