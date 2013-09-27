@@ -23,10 +23,11 @@
   ],
   "dependencies": {
     "angular-cache": "~1.2.0",
-    "angular": "~1.0.8",
+    "angular": "~1.2.0-rc.2",
     "lodash": "~2.1.0",
     "momentjs": "~2.2.1",
     "foundation": "~4.3.2",
-    "neosavvy-javascript-core": "~0.0.1"
+    "neosavvy-javascript-core": "~0.0.1",
+    "neosavvy-javascript-angular-core": "~0.0.1"
   }
 }
