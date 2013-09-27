@@ -73,6 +73,32 @@ module.exports = function (grunt) {
                 files:'<%= jshint.lib_test.src %>',
                 tasks:['jshint:lib_test', 'qunit']
             }
+        },
+        nodemon: {
+            dev: {
+                options: {
+                    file: 'src/main/resources/web-server.js',
+                    args: [
+                        '3000',
+                        __dirname + '/src/main/resources/'
+                    ],
+                    nodeArgs: ['--debug'],
+                    cwd: __dirname,
+                    logConcurrentOutput: true
+                }
+            }
+//            devBuilt: {
+//                options: {
+//                    file: 'src/main/resources/web-server.js',
+//                    args: [
+//                        '3100',
+//                        __dirname + '/target/browser/go'
+//                    ],
+//                    nodeArgs: ['--debug'],
+//                    cwd: __dirname,
+//                    logConcurrentOutput: true
+//                }
+//            }
         }
     });
 
@@ -83,6 +109,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-nodemon');
 
     // Default task.
     grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);

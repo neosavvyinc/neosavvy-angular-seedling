@@ -25,6 +25,7 @@
     "angular-cache": "~1.2.0",
     "angular": "~1.0.8",
     "lodash": "~2.1.0",
-    "momentjs": "~2.2.1"
+    "momentjs": "~2.2.1",
+    "foundation": "~4.3.2"
   }
 }
