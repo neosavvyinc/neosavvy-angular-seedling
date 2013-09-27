@@ -26,6 +26,7 @@
     "angular": "~1.0.8",
     "lodash": "~2.1.0",
     "momentjs": "~2.2.1",
-    "foundation": "~4.3.2"
+    "foundation": "~4.3.2",
+    "neosavvy-javascript-core": "~0.0.1"
   }
 }
