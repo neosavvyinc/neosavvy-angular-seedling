@@ -87,18 +87,6 @@ module.exports = function (grunt) {
                     logConcurrentOutput: true
                 }
             }
-//            devBuilt: {
-//                options: {
-//                    file: 'src/main/resources/web-server.js',
-//                    args: [
-//                        '3100',
-//                        __dirname + '/target/browser/go'
-//                    ],
-//                    nodeArgs: ['--debug'],
-//                    cwd: __dirname,
-//                    logConcurrentOutput: true
-//                }
-//            }
         }
     });
 
