@@ -1,4 +1,5 @@
-<!DOCTYPE html ng-app="application">
+<!DOCTYPE html>
+<html ng-app="application">
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -26,34 +27,19 @@
 
 <div class="row">
     <div class="large-3 columns">
-        <h1><img src="http://placehold.it/400x100&text=Logo"></h1>
+        <h1><a href="/"><img src="http://placehold.it/400x100&text=Logo"></a></h1>
     </div>
     <div class="large-9 columns">
         <ul class="button-group right">
-            <li><a href="#" class="button">Link 1</a></li>
-            <li><a href="#" class="button">Link 2</a></li>
-            <li><a href="#" class="button">Link 3</a></li>
-            <li><a href="#" class="button">Link 4</a></li>
+            <li><a href="#/home" class="button">Home</a></li>
+            <li><a href="#/grid" class="button">Grid</a></li>
+            <li><a href="#/list" class="button">List</a></li>
         </ul>
     </div>
 </div>
 
-<!-- End Header and Nav -->
-
-
-
 <ng-view/>
 
-
-
-
-
-<script src="lib/lodash/lodash.compat.js"></script>
-<script src="lib/angular/angular.js"></script>
-<script src="application/application.js"></script>
-<script src="application/constants/configuration.js"></script>
-
-<!-- Footer -->
 
 <footer class="row">
     <div class="large-12 columns">
@@ -76,12 +62,18 @@
     </div>
 </footer>
 
+<script src="lib/lodash/lodash.compat.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="application/application.js"></script>
+<script src="application/constants/configuration.js"></script>
+
+
 <script>
-    document.write('<script src=js/vendor/' +
+    document.write('<script src=lib/foundation/js/vendor/' +
             ('__proto__' in {} ? 'zepto' : 'jquery') +
             '.js><\/script>')
 </script>
-<script src="js/foundation.min.js"></script>
+<script src="lib/foundation/js/foundation/foundation.js"></script>
 <script>
     $(document).foundation();
 </script>

@@ -23,19 +23,26 @@ angular.module(
         function($routeProvider) {
 
 
-        $routeProvider.when('/index', {
-            templateUrl: 'view/content/home-ptl.html',
-            controller: HomeController,
-            controllerAs: 'book'
-        });
-        $routeProvider.when('/Book/:bookId/ch/:chapterId', {
-            templateUrl: 'chapter.html',
-            controller: ChapterCntl,
-            controllerAs: 'chapter'
-        });
+            $routeProvider.when('/index', {
+                templateUrl: '/application/view/content/home-ptl.html'
+    //            controller: HomeController,
+    //            controllerAs: 'book'
+            });
+            $routeProvider.when('/grid', {
+                templateUrl: '/application/view/content/grid-ptl.html'
+    //            controller: ChapterCntl,
+    //            controllerAs: 'chapter'
+            });
+            $routeProvider.when('/list', {
+                templateUrl: '/application/view/content/list-ptl.html'
+    //            controller: ChapterCntl,
+    //            controllerAs: 'chapter'
+            });
 
-        $routeProvider.
-            otherwise({templateUrl: 'application/view/content/content.html'});
+            $routeProvider.otherwise({templateUrl: '/application/view/content/home-ptl.html'});
+
+            console.log("Starting this mofo");
+
         }
     ]
 );
