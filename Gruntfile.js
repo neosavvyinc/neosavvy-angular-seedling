@@ -1,4 +1,3 @@
-/*global module:false*/
 module.exports = function (grunt) {
 
     // Project configuration.
@@ -10,24 +9,34 @@ module.exports = function (grunt) {
             testRuby: {
                 options: {
                     callback: function( err, stdout, stderr, cb ) {
-
                         var output = stdout.split("\n");
                         if( output[0] === undefined || output[0] === "" ) {
                             console.log("You need to install Ruby");
                             return false;
+                        } else {
+                            console.log("You have Ruby installed here: [" + output[0] + "]");
                         }
-                        else if ( output[1] === undefined || output[1] === "" ) {
-                            console.log("You need to install SASS");
-                            return false;
-                        }
-                        else {
-                            console.log("SASS and Ruby installed and available on PATH");
-                        }
+                        cb();
+
                     }
                 },
-                command: function (command) {
-                    return 'which ruby && which sass';
-                 }
+                command: "which ruby"
+            },
+            testSass: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install Sass");
+                            return false;
+                        } else {
+                            console.log("You have Sass installed here: [" + output[0] + "]")
+                        }
+                        cb();
+
+                    }
+                },
+                command: "which sass"
             }
         },
 
@@ -133,6 +142,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
 
+
     /**
      * We have some external dependencies in our build. This should ensure
      * both are on your machine before letting the build complete.
@@ -143,6 +153,7 @@ module.exports = function (grunt) {
     grunt.registerTask('verify', ['shell'])
 
     // Default task.
-    grunt.registerTask('default', ['verify']);
+    grunt.registerTask('default', ['verify', 'copy']);
 
 };
+
