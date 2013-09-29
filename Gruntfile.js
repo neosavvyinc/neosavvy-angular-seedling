@@ -40,14 +40,28 @@ module.exports = function (grunt) {
             },
             compileFoundation: {
                 options: {
-                    cwd: "<%= pkg.paths.sourceDirectory %>/lib/foundation",
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log(stdout);
+                        cb();
+                    }
+                },
+                command: "cd <%= pkg.paths.sourceDirectory %>/lib/foundation && npm install && grunt test"
+            },
+            buildVersion : {
+                options: {
                     callback: function( err, stdout, stderr, cb ) {
                         console.log(stdout);
                         cb();
 
                     }
                 },
-                command: "cd src/main/resources/lib/foundation && npm install && grunt test"
+                command: [
+                    'rm src/main/resources/buildinfo.txt',
+                    'touch src/main/resources/buildinfo.txt',
+                    'echo `date` >> src/main/resources/buildinfo.txt',
+                    "echo 'Built from branch: ' `git rev-parse --abbrev-ref HEAD` >> src/main/resources/buildinfo.txt",
+                    "cat src/main/resources/buildinfo.txt"
+                ].join("&&")
             }
         },
 
@@ -178,7 +192,7 @@ module.exports = function (grunt) {
      * Phase 3 is to copy resources from source directories to the target
      * -
      */
-    grunt.registerTask('copyResources', ['copy']);
+    grunt.registerTask('copyResources', ['shell:buildVersion', 'copy']);
 
     /**
      * Phase 4 is to run tests against the pre-copied source and post-copied source
@@ -188,7 +202,7 @@ module.exports = function (grunt) {
     /**
      * Phase 5 is to deploy and start the application
      */
-    grunt.registerTask('deploy', []);
+    grunt.registerTask('deploy', ['nodemon']);
 
     // Default task.
     grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
