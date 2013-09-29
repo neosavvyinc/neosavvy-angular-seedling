@@ -3,3 +3,7 @@ node_modules
 src/main/resources/lib
 
 .idea/*
+
+src/main/resources/buildinfo.txt
+
+target
