@@ -11,6 +11,24 @@ module.exports = function (grunt) {
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
+
+        clean: {
+            clean: ['<%= pkg.paths.buildOutputDirectory %>']
+        },
+        copy: {
+            browser: {
+                files: [
+                    {
+                        expand:true,
+                        cwd:'<%= pkg.paths.sourceDirectory %>',
+                        src:[
+                            '**/*'
+                        ],
+                        dest: '<%= pkg.paths.buildOutputDirectory %>/browser/en'
+                    }
+                ]
+            }
+        },
         bower:{
             install:{
                 options:{
@@ -86,11 +104,25 @@ module.exports = function (grunt) {
                     cwd: __dirname,
                     logConcurrentOutput: true
                 }
+            },
+            built: {
+                options: {
+                    file: 'target/browser/en/web-server.js',
+                    args: [
+                        '4000',
+                        __dirname + '/src/main/resources/'
+                    ],
+                    nodeArgs: ['--debug'],
+                    cwd: __dirname,
+                    logConcurrentOutput: true
+                }
             }
         }
     });
 
     // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-qunit');
