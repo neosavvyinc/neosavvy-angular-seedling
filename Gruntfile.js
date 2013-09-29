@@ -145,6 +145,24 @@ module.exports = function (grunt) {
                     logConcurrentOutput: true
                 }
             }
+        },
+        open : {
+            app : {
+                path: 'http://127.0.0.1:4000/',
+                app: 'Google Chrome'
+            },
+            src : {
+                path: 'http://127.0.0.1:3000/',
+                app: 'Google Chrome'
+            }
+        },
+        concurrent: {
+            dev: {
+                options: {
+                    logConcurrentOutput: true
+                },
+                tasks: ['nodemon', 'open']
+            }
         }
     });
 
@@ -170,6 +188,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-concurrent');
 
 
 
@@ -180,7 +200,7 @@ module.exports = function (grunt) {
      * 1) Ruby is needed for SASS
      * 2) SASS is needed to compile CSS from SCSS
      */
-    grunt.registerTask('verify', ['shell']);
+    grunt.registerTask('verify', ['shell:testRuby', 'shell:testSass']);
 
     /**
      * Phase 2 is to resolve dependencies
@@ -202,7 +222,7 @@ module.exports = function (grunt) {
     /**
      * Phase 5 is to deploy and start the application
      */
-    grunt.registerTask('deploy', ['nodemon']);
+    grunt.registerTask('deploy', ['concurrent']);
 
     // Default task.
     grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
