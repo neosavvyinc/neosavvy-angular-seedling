@@ -45,11 +45,11 @@ module.exports = function (grunt) {
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-        // Task configuration.
 
         clean: {
             clean: ['<%= pkg.paths.buildOutputDirectory %>']
         },
+
         copy: {
             browser: {
                 files: [
@@ -64,6 +64,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
         bower:{
             install:{
                 options:{
@@ -72,6 +73,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+
         concat:{
             options:{
                 banner:'<%= banner %>',
@@ -91,16 +93,7 @@ module.exports = function (grunt) {
                 dest:'dist/<%= pkg.name %>.min.js'
             }
         },
-        watch:{
-            gruntfile:{
-                files:'<%= jshint.gruntfile.src %>',
-                tasks:['jshint:gruntfile']
-            },
-            lib_test:{
-                files:'<%= jshint.lib_test.src %>',
-                tasks:['jshint:lib_test', 'qunit']
-            }
-        },
+
         nodemon: {
             dev: {
                 options: {
@@ -150,10 +143,32 @@ module.exports = function (grunt) {
      * 1) Ruby is needed for SASS
      * 2) SASS is needed to compile CSS from SCSS
      */
-    grunt.registerTask('verify', ['shell'])
+    grunt.registerTask('verify', ['shell']);
+
+    /**
+     * Phase 2 is to resolve dependencies
+     * - Right now we use Bower to do so.
+     */
+    grunt.registerTask('resolve', ['bower:install']);
+
+    /**
+     * Phase 3 is to copy resources from source directories to the target
+     * -
+     */
+    grunt.registerTask('copyResources', ['copy']);
+
+    /**
+     * Phase 4 is to run tests against the pre-copied source and post-copied source
+     */
+    grunt.registerTask('runTests', []);
+
+    /**
+     * Phase 5 is to deploy and start the application
+     */
+    grunt.registerTask('deploy', []);
 
     // Default task.
-    grunt.registerTask('default', ['verify', 'copy']);
+    grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
 
 };
 
