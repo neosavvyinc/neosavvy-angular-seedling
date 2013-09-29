@@ -37,6 +37,17 @@ module.exports = function (grunt) {
                     }
                 },
                 command: "which sass"
+            },
+            compileFoundation: {
+                options: {
+                    cwd: "<%= pkg.paths.sourceDirectory %>/lib/foundation",
+                    callback: function( err, stdout, stderr, cb ) {
+                        console.log(stdout);
+                        cb();
+
+                    }
+                },
+                command: "cd src/main/resources/lib/foundation && npm install && grunt test"
             }
         },
 
@@ -47,7 +58,8 @@ module.exports = function (grunt) {
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
 
         clean: {
-            clean: ['<%= pkg.paths.buildOutputDirectory %>']
+            clean: ['<%= pkg.paths.buildOutputDirectory %>'],
+            bower: ['<%= pkg.paths.sourceDirectory %>/lib/']
         },
 
         copy: {
@@ -122,6 +134,17 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.task.registerMultiTask('buildDependencies', function() {
+        grunt.log.writeln("Building for project dependency: " + this.target);
+
+        grunt.util.spawn({
+            cmd: 'grunt',
+            args: ['test']
+        }, function(error, result, code){
+
+        })
+    });
+
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -149,7 +172,7 @@ module.exports = function (grunt) {
      * Phase 2 is to resolve dependencies
      * - Right now we use Bower to do so.
      */
-    grunt.registerTask('resolve', ['bower:install']);
+    grunt.registerTask('resolve', ['bower:install', 'shell:compileFoundation']);
 
     /**
      * Phase 3 is to copy resources from source directories to the target

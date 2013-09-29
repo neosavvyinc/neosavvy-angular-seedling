@@ -14,7 +14,8 @@ angular.module(
         'neosavvy.services',
         'neosavvy.directives',
         'neosavvy.constants',
-        'neosavvy.controllers'
+        'neosavvy.controllers',
+        'ngRoute'
     ]
 ).
   config(
