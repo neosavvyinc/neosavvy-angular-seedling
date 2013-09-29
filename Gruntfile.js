@@ -1,20 +1,55 @@
-/*global module:false*/
 module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
         // Metadata.
         pkg:grunt.file.readJSON('package.json'),
+
+        shell: {
+            testRuby: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install Ruby");
+                            return false;
+                        } else {
+                            console.log("You have Ruby installed here: [" + output[0] + "]");
+                        }
+                        cb();
+
+                    }
+                },
+                command: "which ruby"
+            },
+            testSass: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install Sass");
+                            return false;
+                        } else {
+                            console.log("You have Sass installed here: [" + output[0] + "]")
+                        }
+                        cb();
+
+                    }
+                },
+                command: "which sass"
+            }
+        },
+
         banner:'/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
             '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
             ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-        // Task configuration.
 
         clean: {
             clean: ['<%= pkg.paths.buildOutputDirectory %>']
         },
+
         copy: {
             browser: {
                 files: [
@@ -29,6 +64,7 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
         bower:{
             install:{
                 options:{
@@ -37,6 +73,7 @@ module.exports = function (grunt) {
                 }
             }
         },
+
         concat:{
             options:{
                 banner:'<%= banner %>',
@@ -56,42 +93,7 @@ module.exports = function (grunt) {
                 dest:'dist/<%= pkg.name %>.min.js'
             }
         },
-        jshint:{
-            options:{
-                curly:true,
-                eqeqeq:true,
-                immed:true,
-                latedef:true,
-                newcap:true,
-                noarg:true,
-                sub:true,
-                undef:true,
-                unused:true,
-                boss:true,
-                eqnull:true,
-                browser:true,
-                globals:{}
-            },
-            gruntfile:{
-                src:'Gruntfile.js'
-            },
-            lib_test:{
-                src:['lib/**/*.js', 'test/**/*.js']
-            }
-        },
-        qunit:{
-            files:['test/**/*.html']
-        },
-        watch:{
-            gruntfile:{
-                files:'<%= jshint.gruntfile.src %>',
-                tasks:['jshint:gruntfile']
-            },
-            lib_test:{
-                files:'<%= jshint.lib_test.src %>',
-                tasks:['jshint:lib_test', 'qunit']
-            }
-        },
+
         nodemon: {
             dev: {
                 options: {
@@ -130,8 +132,43 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-shell');
+
+
+
+    /**
+     * We have some external dependencies in our build. This should ensure
+     * both are on your machine before letting the build complete.
+     *
+     * 1) Ruby is needed for SASS
+     * 2) SASS is needed to compile CSS from SCSS
+     */
+    grunt.registerTask('verify', ['shell']);
+
+    /**
+     * Phase 2 is to resolve dependencies
+     * - Right now we use Bower to do so.
+     */
+    grunt.registerTask('resolve', ['bower:install']);
+
+    /**
+     * Phase 3 is to copy resources from source directories to the target
+     * -
+     */
+    grunt.registerTask('copyResources', ['copy']);
+
+    /**
+     * Phase 4 is to run tests against the pre-copied source and post-copied source
+     */
+    grunt.registerTask('runTests', []);
+
+    /**
+     * Phase 5 is to deploy and start the application
+     */
+    grunt.registerTask('deploy', []);
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['verify', 'clean', 'resolve', 'copyResources', 'runTests', 'deploy']);
 
 };
+
