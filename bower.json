@@ -24,6 +24,7 @@
   "dependencies": {
     "angular-cache": "~1.2.0",
     "angular": "~1.2.0-rc.2",
+    "angular-route": "~1.2.0-rc.2",
     "lodash": "~2.1.0",
     "momentjs": "~2.2.1",
     "foundation": "~4.3.2",
