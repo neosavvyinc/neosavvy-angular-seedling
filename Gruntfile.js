@@ -5,6 +5,32 @@ module.exports = function (grunt) {
     grunt.initConfig({
         // Metadata.
         pkg:grunt.file.readJSON('package.json'),
+
+        shell: {
+            testRuby: {
+                options: {
+                    callback: function( err, stdout, stderr, cb ) {
+
+                        var output = stdout.split("\n");
+                        if( output[0] === undefined || output[0] === "" ) {
+                            console.log("You need to install Ruby");
+                            return false;
+                        }
+                        else if ( output[1] === undefined || output[1] === "" ) {
+                            console.log("You need to install SASS");
+                            return false;
+                        }
+                        else {
+                            console.log("SASS and Ruby installed and available on PATH");
+                        }
+                    }
+                },
+                command: function (command) {
+                    return 'which ruby && which sass';
+                 }
+            }
+        },
+
         banner:'/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
             '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
             '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -56,32 +82,6 @@ module.exports = function (grunt) {
                 dest:'dist/<%= pkg.name %>.min.js'
             }
         },
-        jshint:{
-            options:{
-                curly:true,
-                eqeqeq:true,
-                immed:true,
-                latedef:true,
-                newcap:true,
-                noarg:true,
-                sub:true,
-                undef:true,
-                unused:true,
-                boss:true,
-                eqnull:true,
-                browser:true,
-                globals:{}
-            },
-            gruntfile:{
-                src:'Gruntfile.js'
-            },
-            lib_test:{
-                src:['lib/**/*.js', 'test/**/*.js']
-            }
-        },
-        qunit:{
-            files:['test/**/*.html']
-        },
         watch:{
             gruntfile:{
                 files:'<%= jshint.gruntfile.src %>',
@@ -130,8 +130,19 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-shell');
+
+
+    /**
+     * We have some external dependencies in our build. This should ensure
+     * both are on your machine before letting the build complete.
+     *
+     * 1) Ruby is needed for SASS
+     * 2) SASS is needed to compile CSS from SCSS
+     */
+    grunt.registerTask('verify', ['shell'])
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+    grunt.registerTask('default', ['verify']);
 
 };
