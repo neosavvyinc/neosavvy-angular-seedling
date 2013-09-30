@@ -11,9 +11,20 @@ describe("view.content.HomeController", function () {
         });
     });
 
-    describe("someMethod", function () {
-        it("Should do something", function () {
-            expect(true).toBeTruthy();
+    describe("ACTION HANDLERS", function () {
+        describe("onImageClick", function () {
+            it("Should increment the $scope.imageClicks value", function () {
+                expect($scope.imageClicks).toEqual(0);
+                controller.onImageClick();
+                controller.onImageClick();
+                expect($scope.imageClicks).toEqual(2);
+            });
+        });
+    });
+
+    describe("INITIALIZATION", function () {
+        it("Should instantiate the $scope.imageClicks to 0", function () {
+            expect($scope.imageClicks).toEqual(0);
         });
     });
 });
