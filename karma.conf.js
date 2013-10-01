@@ -14,14 +14,24 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'src/main/**/*.js',
+        'src/main/resources/lib/lodash/lodash.compat.js',
+        'src/main/resources/lib/momentjs/moment.js',
+        'src/main/resources/lib/neosavvy-javascript-core/neosavvy-javascript-core.js',
+        'src/main/resources/lib/q/q.js',
+        'src/main/resources/lib/zepto/zepto.js',
+        'src/main/resources/lib/angular/angular.js',
+        'src/main/resources/lib/angular-*/*.js',
+        'src/main/resources/lib/neosavvy-javascript-angular-core/neosavvy-javascript-angular-core.js',
+        'src/main/resources/application/application.js',
+        'src/main/resources/core/**/*.js',
+        'src/main/resources/application/**/*.js',
         'src/test/**/*-spec.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+        '**/Gruntfile.js'
     ],
 
 

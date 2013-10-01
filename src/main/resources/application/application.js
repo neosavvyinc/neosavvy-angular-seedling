@@ -5,18 +5,18 @@ Neosavvy.Services = angular.module('neosavvy.services', []);
 Neosavvy.Controllers = angular.module('neosavvy.controllers', []);
 Neosavvy.Filters = angular.module('neosavvy.filters', []);
 Neosavvy.Directives = angular.module('neosavvy.directives', []);
-
+Neosavvy.Dependencies = [
+    'neosavvy.filters',
+    'neosavvy.services',
+    'neosavvy.directives',
+    'neosavvy.constants',
+    'neosavvy.controllers',
+    'ngRoute'
+];
 
 angular.module(
     'application',
-    [
-        'neosavvy.filters',
-        'neosavvy.services',
-        'neosavvy.directives',
-        'neosavvy.constants',
-        'neosavvy.controllers',
-        'ngRoute'
-    ]
+    Neosavvy.Dependencies
 ).
   config(
     [
