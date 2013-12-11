@@ -34,13 +34,18 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            'src/main/resources/application/**/*.js': 'coverage',
+            'src/main/resources/application/**/*.js': 'coverage'
         },
 
 
         // test results reporter to use
         // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
         reporters: ['progress', 'coverage', 'junit'],
+
+        coverageReporter: {
+            type: 'html',
+            dir: 'target/coverage/'
+        },
 
         junitReporter: {
             outputFile: 'target/coverage/cobertura.unit.xml'

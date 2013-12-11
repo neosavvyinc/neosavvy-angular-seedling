@@ -288,7 +288,7 @@ module.exports = function (grunt) {
                     file: 'target/browser/web-server.js',
                     args: [
                         '4000',
-                        __dirname + '/src/main/resources/'
+                        __dirname + '/target/'
                     ],
                     cwd: __dirname,
                     logConcurrentOutput: true
@@ -337,7 +337,7 @@ module.exports = function (grunt) {
         compress: {
             main: {
                 options: {
-                    archive: 'target/activation-client.zip',
+                    archive: 'target/seedling.zip',
                     mode: 'zip'
                 },
                 files: [
