@@ -20,12 +20,16 @@ module.exports = function (config) {
             'src/main/resources/lib/momentjs/moment.js',
             'src/main/resources/lib/neosavvy-javascript-core/neosavvy-javascript-core.js',
             'src/main/resources/lib/q/q.js',
+            'src/main/resources/lib/jquery/jquery.js',
             'src/main/resources/lib/angular/angular.js',
             'src/main/resources/lib/angular-*/*.js',
+
+
             'src/main/resources/lib/neosavvy-javascript-angular-core/neosavvy-javascript-angular-core.js',
             'src/main/resources/application/application.js',
             'src/main/resources/application/**/*.js',
-            'src/test/**/*-spec.js'
+            'src/test/**/*-spec.js',
+
         ],
 
 
@@ -34,7 +38,8 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            'src/main/resources/application/**/*.js': 'coverage'
+            'src/main/resources/application/**/*.js': 'coverage',
+            'src/main/resources/application/directives/*.html': 'ng-html2js'
         },
 
 
@@ -61,7 +66,7 @@ module.exports = function (config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_DEBUG,
 
 
         // enable / disable watching file and executing tests whenever any file changes
