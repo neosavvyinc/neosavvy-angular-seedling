@@ -22,23 +22,19 @@
     "tests"
   ],
   "dependencies": {
-    "angular-cache": "~1.2.0",
-    "angular": "~1.2.0-rc.2",
-    "angular-route": "~1.2.0-rc.2",
-    "lodash": "~2.1.0",
-    "momentjs": "~2.2.1",
-    "foundation": "~4.3.2",
-    "neosavvy-javascript-core": "~0.0.1",
-    "neosavvy-javascript-angular-core": "~0.0.1"
+    "angular-route": "1.2.4",
+    "momentjs": "2.2.1",
+    "foundation": "https://github.com/zurb/foundation.git#v4.3.2",
+    "neosavvy-javascript-angular-core": "0.1.2"
   },
   "devDependencies": {
-      "angular-animate": "~1.2.0-rc.2",
-      "angular-cookies": "~1.2.0-rc.2",
-      "angular-loader": "~1.2.0-rc.2",
-      "angular-mocks": "~1.2.0-rc.2",
-      "angular-resource": "~1.2.0-rc.2",
-      "angular-route": "~1.2.0-rc.2",
-      "angular-sanitize": "~1.2.0-rc.2",
-      "angular-touch": "~1.2.0-rc.2"
+      "angular-animate": "1.2.4",
+      "angular-cookies": "1.2.4",
+      "angular-loader": "1.2.4",
+      "angular-mocks": "1.2.4",
+      "angular-resource": "1.2.4",
+      "angular-route": "1.2.4",
+      "angular-sanitize": "1.2.4",
+      "angular-touch": "1.2.4"
   }
 }
