@@ -24,7 +24,7 @@
   "dependencies": {
     "momentjs": "2.2.1",
     "foundation": "https://github.com/zurb/foundation.git#v4.3.2",
-    "neosavvy-javascript-angular-core": "0.1.4"
+    "neosavvy-javascript-angular-core": "0.1.7"
   },
   "devDependencies": {
       "angular-animate": "1.2.4",
