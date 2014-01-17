@@ -19,6 +19,36 @@ Expectations are that you have SASS and Ruby installed. The build will fail if y
 gem install sass
 ```
 
+## Requirements Pulled in Via Bower
+
+We don't think you have to use all these libraries for your project, but we have battle tested this stack in several production environments. Conclusion: it's nice.
+
+```
+//Production
+angular
+angular-animate
+angular-cookies
+angular-route
+angular-cookies
+angular-loader
+angular-cache
+angular-sanitize
+foundation 4
+jQuery
+jQuery.XDomainRequest /* For IE8, 9 requests */
+lodash
+momentjs
+neosavvy-javascript-angular-core
+neosavvy-javascript-core
+node-uuid
+numeral
+q
+underscore.string
+
+//Dev
+angular-mocks
+angular-resource
+
 
 ### 0.0.1 - 09/29/2013
 
