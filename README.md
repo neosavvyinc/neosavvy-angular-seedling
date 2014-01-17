@@ -48,6 +48,9 @@ underscore.string
 //Dev
 angular-mocks
 angular-resource
+```
+
+We appreciate your use, forks, and pull requests.
 
 
 ### 0.0.1 - 09/29/2013
