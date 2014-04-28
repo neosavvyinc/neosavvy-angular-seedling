@@ -27,13 +27,13 @@
     "neosavvy-javascript-angular-core": "0.1.8"
   },
   "devDependencies": {
-      "angular-animate": "1.2.4",
-      "angular-cookies": "1.2.4",
-      "angular-loader": "1.2.4",
-      "angular-mocks": "1.2.4",
-      "angular-resource": "1.2.4",
-      "angular-route": "1.2.4",
-      "angular-sanitize": "1.2.4",
-      "angular-touch": "1.2.4"
+      "angular-animate": "1.2.16",
+      "angular-cookies": "1.2.16",
+      "angular-loader": "1.2.16",
+      "angular-mocks": "1.2.16",
+      "angular-resource": "1.2.16",
+      "angular-route": "1.2.16",
+      "angular-sanitize": "1.2.16",
+      "angular-touch": "1.2.16"
   }
 }
